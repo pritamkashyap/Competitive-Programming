@@ -48,7 +48,7 @@ public:
 		queue<int> q;
 		for (int i = 0 ; i < v; i++) {
 			visited[i] = false;
-			parent[i] = false;
+			parent[i] = i;
 		}
 
 		int src = 0;
@@ -59,7 +59,7 @@ public:
 			int node = q.front();
 			q.pop();
 			for (int nbr : l[node]) {
-				if (visited[nbr] == true and parent[node] != nbr) {
+				if (visited[nbr] == true && parent[node] != nbr) {
 					return false;
 				}
 				else if (!visited[nbr]) {
@@ -101,7 +101,9 @@ int32_t main() {
 		int n;
 		cin >> n;
 		Graph g(n);
-		for (int i = 0 ; i < n ; i++) {
+		int m;
+		cin >> m;
+		for (int i = 0 ; i < m ; i++) {
 			int x, y;
 			cin >> x >> y;
 			g.addEdge(x, y);
@@ -110,10 +112,10 @@ int32_t main() {
 
 
 		if (g.isTree()) {
-			cout << "Cycle Detected" << endl;
+			cout << "Not a Tree" << endl;
 		}
 		else {
-			cout << "Not a Cycle" << endl;
+			cout << "It is a Tree" << endl;
 		}
 
 
