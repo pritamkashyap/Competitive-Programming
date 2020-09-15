@@ -73,15 +73,25 @@ node *buildTree() {
 
 }
 
-void printNode(node *root) {
-	if (root == NULL) {
-		return;
-	}
-	cout << root->data << " ";
-	printNode(root->left);
-	printNode(root->right);
-}
 
+
+void bfs(node* root) {
+	queue <node*> q;
+	q.push(root);
+
+	while (!q.empty()) {
+		node *f = q.front();
+		cout << f->data << " ";
+		q.pop();
+		if (f->left) {
+			q.push(f->left);
+		}
+		if (f->right) {
+			q.push(f->right);
+		}
+	}
+	return;
+}
 
 
 void pritam()
@@ -101,7 +111,9 @@ int32_t main()
 	pritam();
 	w(t) {
 		node *root = buildTree();
-		printNode(root);
+
+		bfs(root);
+
 
 
 	}
